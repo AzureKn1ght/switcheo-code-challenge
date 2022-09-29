@@ -1,8 +1,12 @@
 /***
- This solution uses a subquery in the FROM clause. Such an approach may be suboptimal or less efficient. Given more time, we should explore for ways to convert it to use a Joins solution instead.
+ This solution uses a subquery in the FROM clause. 
+ Such an approach may be suboptimal or less efficient. 
+ Given more time, we should explore for ways to convert 
+ it to use a Joins solution instead.
  
- https: / / www.navicat.com / en / company / aboutus / blog / 1704 - joins - versus - subqueries - which - is - faster
+ https://www.navicat.com/en/company/aboutus/blog/1704-joins-versus-subqueries-which-is-faster
  ***/
+
 SELECT
     accounts.address
 FROM
