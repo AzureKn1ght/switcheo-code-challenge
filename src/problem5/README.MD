@@ -4,7 +4,7 @@
 ⏰ Duration: You should not spend more than **12 hours** on this problem.
 
 </aside>
-
+<br />
 <aside>
 ⚠️ **Solidity Only** - you are to complete this problem using Solidity.
 
@@ -48,7 +48,7 @@ test().then(console.log);
 
 The output should be organized as one `token amount` per object. 
 
-```json
+```bash
 [
   {
     token: "0x123d475e13aa54a43a7421d94caa4459da021c77",
@@ -62,7 +62,6 @@ The output should be organized as one `token amount` per object.
 ]
 ```
 
-<aside>
+
 💡 **Hint**: You may need to use the NPM module [truffle](https://www.trufflesuite.com/docs/truffle/overview) to complete this task.
 
-</aside>

@@ -5,14 +5,11 @@
 
 </aside>
 
-## OPTIONAL FOR FULL STACK ROLE
+## ***OPTIONAL FOR FULL STACK ROLE***
 
 # Task
 
-<aside>
 ⚠️ Your solution shall use only [Vanilla JavaScript](http://vanilla-js.com/).
-
-</aside>
 
 Implement a datasource connector to abstract away data retrieval and manipulation from the *View Controllers*. You are required to implement a Datasource utility class. How your implementation will be used:
 
@@ -28,10 +25,9 @@ ds.getPrices()
     });
 ```
 
-<aside>
+
 🌐 **Data endpoint:** [https://static.ngnrs.io/test/prices](https://static.ngnrs.io/test/prices)
 
-</aside>
 
 ## Notes
 
