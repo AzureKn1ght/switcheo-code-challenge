@@ -4,7 +4,7 @@ async function main() {
   /*
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts, so myContract here is a factory for instances of our contract.
   */
-  const myContract = await ethers.getContractFactory("MyContract");
+  const myContract = await ethers.getContractFactory("Utility");
 
   // here we deploy the contract
   const deployedContract = await myContract.deploy();
@@ -27,4 +27,4 @@ main()
 
 
 //VERIFY SOURCE CODE ON ETHERSCAN
-//npx hardhat verify --network goerli <address>
+//npx hardhat verify --network goerli 0x202AbD87FFd0247368A9eDC7a7BB945408E5fc08
