@@ -1,15 +1,20 @@
-const { ethers } = require("ethers");
+import { ethers } from "ethers";
 
-// Declare the required address and ABI variables
+// Declare the contract address and ABI variables
 const SWTH = "0x250b211EE44459dAd5Cd3bCa803dD6a7EcB5d46C";
-const ABI = ["function balanceOf(address) external view returns (uint256)"];
+const ABI = [
+  "function balanceOf(address account) public view returns (uint256)",
+  "function decimals() public view returns (uint8)",
+];
+
+// Declare the array of wallet addresses and to look up
 const ADDRESSES = [
-  // These are the addresses given to look up
-  // But apparently these addresses have 0 balance???
+  // Apparently the addresses to look up have 0 balance???
+  // So I just replaced them with some that have balance for testing purposes
   // https://bscscan.com/token/0x250b211ee44459dad5cd3bca803dd6a7ecb5d46c#balances
-  "0xb5d4f343412dc8efb6ff599d790074d0f1e8d430",
-  "0x0020c5222a24e4a96b720c06b803fb8d34adc0af",
-  "0xd1d8b2aae2ebb2acf013b803bc3c24ca1303a392",
+  "0x9f264339157e0b44fbc2e56f16de68b23ef2efb3",
+  "0xdffd77664ed6e57bb3b5846d5b3e96466413fb6f",
+  "0xee0be17d50632dd13d5d2233b74392291188293e",
 ];
 
 // Main Function
@@ -19,20 +24,23 @@ const main = async (): Promise<void> => {
     "https://bsc-dataseed.binance.org"
   );
 
-  // Connect to the $SWTH ERC-20 contract
+  // Connect to the $SWTH contract
   const contract = new ethers.Contract(SWTH, ABI, provider);
+
+  // Get decimals value of $SWTH token
+  const dec = await contract.decimals();
 
   // Loop through list of ADDRESSES
   for (const address of ADDRESSES) {
-    // Get account balance from the $SWTH contract
+    // Get account balance from the smart contract
     const result = await contract.balanceOf(address);
 
     // Convert the balance to human readable format
-    let balance: string = ethers.utils.formatUnits(result, 8);
+    let balance: string = ethers.utils.formatUnits(result, dec);
     balance = ethers.utils.commify(balance);
 
-    // Display the address and balance
-    console.log(`${address} ${balance}`);
+    // Display address and balance
+    console.log(address, balance);
   }
 };
 
