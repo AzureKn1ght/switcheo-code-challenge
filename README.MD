@@ -1,4 +1,4 @@
-# Switcheo Code Challenge #1 #
+# Switcheo Code Challenge #1 # 
 
 Note that if you fork this repository, your responses may be publicly linked to this repo.  
 Please submit your application along with the solutions attached or linked.   
