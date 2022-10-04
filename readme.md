@@ -12,7 +12,8 @@ We're cool as long as we can view your solution without any pain.
 
 # Problem 7: SQL Query
 <details><summary>Question</summary>
-> ⏰ Duration: You should not spend more than **3 hours** on this problem.
+
+⏰ Duration: You should not spend more than **3 hours** on this problem.
 
 # Task
 
@@ -58,4 +59,4 @@ Note:
 1. You are recommended to use PostgreSQL because that is what we are using. However, feel free to use a language you are more familiar with.
 </details>
 
-**[Solution](src/problem7/)**
+**[> Solution](src/problem7/)**
