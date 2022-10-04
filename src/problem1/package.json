@@ -1,0 +1,12 @@
+{
+  "name": "problem1",
+  "version": "1.0.0",
+  "description": "Three ways to sum to n",
+  "main": "sum-to-n.js",
+  "scripts": {
+    "test": "node sum-to-n.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
