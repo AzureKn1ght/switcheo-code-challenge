@@ -2,8 +2,8 @@
 
 ### The web application is live
 
-I've deployed the web application, so you may test it online at: 
-https://fancy-form.vercel.app/
+You can test the online deployed app here: <br />
+**https://fancy-form.vercel.app/**
 
 Alternatively, you can run it locally using: 
 ```bash
@@ -14,6 +14,18 @@ npm run dev
 
 ```
 
+## Highlights
 
+- Simple frontend form validations
+- Fancy user interface form design :) 
+- Connect app with MetaMask wallet
+- Actual working send Ether function 
+- Works on any EVM chain, try it out! 
 
+## Built With
 
+- Tailwind CSS
+- MetaMask
+- Next.js
+- Ethers
+- React
