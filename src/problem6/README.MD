@@ -56,10 +56,10 @@ of failures or service downtimes, and the admin can also do manual resends of tr
 1. **Data Validation:** we should look to do some server-side data verification to catch any `data` errors
 2. **Limited Retries:** we need to limit the number of retries to avoid clogging up the processing queue 
 3. **Sequential Execution:** it is not clear whether there is only 1 wallet, or 1 per calling client account
-    * If each calling client has it's own set of keys, then we can look to do some possible optimizations with parallel processing assuming clients are unrelated
+    * If each calling client has it's own set of keys, then we can look to do some possible optimizations with parallel processing or batch processing assuming clients are unrelated and that their transactions are independent of each other
     * If they all share one set of keys for the signing, then we need to be careful the order in which we execute and retry transactions because there may be some dependencies between the transactions and altering of account values
-    * Additionally, since it is an EVM-compatible chain, we should pay attention to the `nounce` of the transaction to ensure they are executed in correct order 
-4. **Updated Gas Fees:** we need to update gas fee values when retrying to prevent multiple failures
+    * As it is an EVM-compatible chain, we should pay attention to the transaction `nounce` to ensure they are executed in correct order  
+4. **Updated Gas Fees:** we need to update the gas fee values when retrying to prevent continuous failures
 5. **Access Control:** for security purposes, we should verify the POST requests to ensure it is authorized
 
 
