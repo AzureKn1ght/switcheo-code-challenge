@@ -1,13 +1,28 @@
 # Problem 6: Transaction Broadcaster Service
 
-<aside>
-⏰ Duration: You should not spend more than **6 hours** on this problem.
-
-</aside>
-
-# Task
-
 This is a system design question. Describe in detail (~500-1000 words) the specifications on how you would design a transaction broadcaster service. You may additionally attach a drawings/diagrams/illustrations if you wish.
+
+## General Requirements
+
+1. A `/broadcast_transaction` API endpoint to receive `HTTP POST` requests
+2. A service to sign the transaction `data` received from  the `HTTP POST` requests
+3. Broadcast of the `signed transaction` to the EVM compatible blockchain network
+4. A response to the request client of Success `HTTP 200` or Failure `HTTP 400-500`
+5. A Page to show the list/log of all transaction regardless passed or failed
+
+## Additional Requirements
+1. Client to assume that `HTTP 200` response transaction will eventually succeed
+2. Broadcaster service to resume processing even after unexpected server restarts
+3. Admin should be able to manually trigger retries for failed transactions
+
+<br>
+
+## Solution Flowchart
+![flowchart img](flowchart.jpg "General Flow")
+
+
+
+
 
 1. There is an internal api that is used by our services. 
 It returns HTTP `200`, or HTTP `400`-`500` .
