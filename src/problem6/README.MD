@@ -52,11 +52,29 @@ of the transaction, and hence we can process them asynchronously. The transactio
 accessed on the page at a later time. This way, the transactions can be retried again in the case 
 of failures or service downtimes, and the admin can also do manual resends of transactions. 
 
-## Added Considerations
-1. Data validation
-2. Retry X number of times
-3. Nounce no parallel same wallet??
-4. Gas fees updated
+## Possible Considerations
+1. **Data Validation:** we should look to do some server-side data verification to catch any `data` errors
+2. **Limited Retries:** we need to limit the number of retries to avoid clogging up the processing queue 
+3. **Sequential Execution:** it is not clear whether there is only 1 wallet, or 1 per client account
+
+
+
+
+5. Nounce no parallel same wallet??
+6. Gas fees updated
+7. Access control
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
