@@ -55,7 +55,8 @@ of failures or service downtimes, and the admin can also do manual resends of tr
 ## Possible Considerations
 1. **Data Validation:** we should look to do some server-side data verification to catch any `data` errors
 2. **Limited Retries:** we need to limit the number of retries to avoid clogging up the processing queue 
-3. **Sequential Execution:** it is not clear whether there is only 1 wallet, or 1 per client account
+3. **Sequential Execution:** it is not clear whether there is only 1 wallet, or 1 per calling client account
+    * Item 3a
 
 
 
