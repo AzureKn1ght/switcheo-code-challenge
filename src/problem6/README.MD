@@ -20,8 +20,6 @@ This is a system design question. Describe in detail (~500-1000 words) the speci
 ## Solution Flowchart
 ![flowchart img](flowchart.jpg "General Flow")
 
-<br>
-
 ## Solution Flow Part 1
 This solution assumes a more sequential flow of processing:  
 
@@ -38,10 +36,23 @@ or otherwise. Given the high success rate and relatively short waiting times, we
 handle the transaction proccessing immediately when the API is called to give quick finality. 
 
 ## Solution Flow Part 2 
-This solution attempts to incorporate the Additional Requirements which addressing the shortcomings of Part 1
+This solution attempts to incorporate the *Additional Requirements* while addressing the shortcomings of Part 1.
 
+1. Instead of processing immediately, transactions are added to a processing queue
+2. Once added to queue, the transaction status is *pending* and will be braodcasted 
+3. At this point, we can send `HTTP 200` to the client as per the given requirements
+4. The transactions are then processes sequentially asynchronous of the calling client
+5. If the broadcaster service every restarts, it will pick back up from the stored queue
+6. As the transaction outcomes are received, they will update status and retry as needed 
+7. All transaction logs and details and status can all be access from the frontend page
+8. Admin can always login to the admin panel to manually retry any failed transactions
+
+The **assumption** of the second flow, is that the client process is not dependant on the outcomes
+of the transaction, and hence we can process them asynchronously. The transaction statuses can be 
+accessed on the page at a later time. This way, the transactions can be retried again in the case 
+of failures or service downtimes, and the admin can also do manual resends of transactions. 
 
 ## Added Considerations
 1. Data validation
 2. Retry X number of times
-3. Nounce
+3. Nounce no parallel
