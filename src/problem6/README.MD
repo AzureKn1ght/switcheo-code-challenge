@@ -15,9 +15,8 @@ This is a system design question. Describe in detail (~500-1000 words) the speci
 2. Broadcaster service to resume processing even after unexpected server restarts
 3. Admin should be able to manually trigger retries for failed transactions
 
-<br>
 
-## Solution Flowchart
+# Solution Flowchart
 ![flowchart img](flowchart.jpg "General Flow")
 
 ## Solution Flow Part 1
