@@ -55,4 +55,8 @@ of failures or service downtimes, and the admin can also do manual resends of tr
 ## Added Considerations
 1. Data validation
 2. Retry X number of times
-3. Nounce no parallel
+3. Nounce no parallel same wallet??
+4. Gas fees updated
+
+
+
