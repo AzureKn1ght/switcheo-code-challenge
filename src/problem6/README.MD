@@ -11,7 +11,7 @@ This is a system design question. Describe in detail (~500-1000 words) the speci
 5. A Page to show the list/log of all transaction regardless passed or failed
 
 ## Additional Requirements
-1. Client to assume that `HTTP 200` response transaction will eventually succeed
+1. Client to assume that `HTTP 200` response transactions will eventually succeed
 2. Broadcaster service to resume processing even after unexpected server restarts
 3. Admin should be able to manually trigger retries for failed transactions
 
@@ -20,28 +20,28 @@ This is a system design question. Describe in detail (~500-1000 words) the speci
 ## Solution Flowchart
 ![flowchart img](flowchart.jpg "General Flow")
 
+<br>
+
+## Solution Flow Part 1
+This solution assumes a more sequential flow of processing:  
+
+1. The client sends the `HTTP POST` request to the API endpoint
+2. The endpoint service immediately processes and signs transaction
+3. Transaction is broadcasted to blockchain, awaiting the outcome
+4. On failure, the broadcast service will retry the transaction again
+5. Once an outcome is reached, a response is send to the client
+6. Transaction status and details are logged for the page display
+
+The **assumption** of the first flow is that the calling client uses a non-blocking process, 
+and hence would likely have a response callback handler for whether the transaction was success 
+or otherwise. Given the high success rate and relatively short waiting times, we have decided to 
+handle the transaction proccessing immediately when the API is called to give quick finality. 
+
+## Solution Flow Part 2 
+This solution attempts to incorporate the Additional Requirements which addressing the shortcomings of Part 1
 
 
-
-
-1. There is an internal api that is used by our services. 
-It returns HTTP `200`, or HTTP `400`-`500` .
-    
-    ```jsx
-    POST /broadcast_transaction 
-    
-    {"message_type": "add_weight(address _addr, uint256 _weight)", "data": "0xd71363280000000000000000000000005eb715d601c2f27f83cb554b6b36e047822fb70a00000000000000000000000000000000000000000000000000000000000000fa"}
-    ```
-    
-2. Using the post request parameters, the broadcaster service signs the `data` and the output returns a `signed transaction`. Next, it broadcasts the `signed transaction` to an evm-compatible blockchain network.
-    1. A broadcasted transaction might fail and if it fails, it should be retried automatically.
-    2. To broadcast a signed transaction, you make a RPC request to a blockchain node. 
-        1. 1% of the time, it does not respond earlier than 30 seconds. 
-        2. 95% of the time it responds with a success code within 20-30 seconds. 
-        3. The rest of the time it returns a failure code.
-    3. There should also be a page that shows the list of transactions that passed or failed.
-
-Additional Requirements
-
-1. If `POST /broadcast_transction` returns HTTP `200 OK`, it is assumed that the transaction will eventually be broadcasted successfully. If the broadcaster service restarts unexpectedly, it should still fulfil them.
-2. An admin is able to, at any point in time, retry a failed broadcast.
+## Added Considerations
+1. Data validation
+2. Retry X number of times
+3. Nounce
